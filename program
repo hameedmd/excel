@@ -1,0 +1,15 @@
+using Excel = Microsoft.Office.Interop.Excel;
+class Program
+{
+    static void Main(string[] args)
+    {
+        var excelapp = new Excel.Application();
+        excelapp.Workbooks.Add();
+        string path = @"C:\Users\mhameed070119\source\repos\ConsoleApp7\Induction 7th Jancopy.xlsx";
+        Excel.Workbook workbook = excelapp.Workbooks.Open(path);
+        Excel.Worksheet workSheet = workbook.Worksheets.get_Item(1);
+        var source = workSheet.Range["h3:H10"].Insert(Excel.XlInsertShiftDirection.xlShiftDown);
+        Excel.Range dest = workSheet.Range["F10"];
+        workbook.SaveAs("Book1.xlsx");
+    }
+}
